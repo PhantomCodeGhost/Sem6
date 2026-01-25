@@ -1,0 +1,399 @@
+Asssignment 1
+SET A
+1. Create android application to change Font Size, Color and Font Family of String. 
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp">
+
+    <!-- Text with changed FONT SIZE -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Font Size Changed"
+        android:textSize="24sp"
+        android:textColor="#000000" />
+
+    <!-- Text with changed FONT COLOR -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Font Color Changed"
+        android:textSize="20sp"
+        android:textColor="#FF5722"
+        android:layout_marginTop="10dp" />
+
+    <!-- Text with changed FONT FAMILY -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Font Family Changed"
+        android:textSize="22sp"
+        android:textColor="#3F51B5"
+        android:fontFamily="serif"
+        android:layout_marginTop="10dp" />
+
+    <!-- All properties together -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Size + Color + Font"
+        android:textSize="26sp"
+        android:textColor="#4CAF50"
+        android:fontFamily="monospace"
+        android:layout_marginTop="15dp" />
+
+</LinearLayout>
+
+
+----------------------------------------
+Asssignment 2
+
+SET A
+1,2,3
+
+
+----------
+SET B 
+1. Create simple application with Login Screen. On successful login, gives message go to next 
+Activity (Without Using Database). 
+
+activity_main.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1">
+
+        <TableRow>
+
+            <TextView
+                android:padding="8dp"
+                android:text="Username : "
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Username" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:padding="8dp"
+                android:text="Password: "
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password" />
+
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Button"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Click To Login"
+        android:gravity="center"/>
+</LinearLayout>
+
+MainActivity.java
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+
+        EditText user, pass;
+        Button button;
+
+        user = findViewById(R.id.username);
+        pass = findViewById(R.id.password);
+        button = findViewById(R.id.btn);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String usr = user.getText().toString();
+                String pas = pass.getText().toString();
+
+                if(usr.equals("admin") && pas.equals("1234")){
+                    Toast.makeText(MainActivity.this, "Login SuccessFull!!!!", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(MainActivity.this, "Invalid Credentials!!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+    }
+}
+
+-------------------------------
+2. Create First Activity to accept information like Student First Name, Middle Name, Last Name, 
+Date of birth, Address, Email ID and display all information on Second Activity when user click 
+on Submit button. 
+
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    android:gravity="top"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Student Details"
+        android:textAlignment="center"
+        android:textSize="30dp" />
+
+    <TableLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:stretchColumns="1">
+
+        <TableRow>
+
+            <TextView
+                android:padding="8dp"
+                android:text="First Name"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etFname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter First Name" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:padding="8dp"
+                android:text="Middle Name"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etMname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Middle Name" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:padding="8dp"
+                android:text="Last Name"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etLname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Last Name" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:padding="8dp"
+                android:text="Date Of Birth :"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/Dob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter DOB" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:padding="8dp"
+                android:text="Address :"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Address" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:padding="8dp"
+                android:text="Email-Id :"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/Email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Email" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:text="Submit"
+        android:textSize="18dp" />
+
+</LinearLayout>
+
+
+MainActivity.java
+public class MainActivity extends AppCompatActivity {
+
+    @SuppressLint("MissingInflatedId")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+
+        EditText etFname, etMname, etLname, etAddress, etEmail, etDob;
+        Button button;
+
+        etFname = findViewById(R.id.etFname);
+        etMname = findViewById(R.id.etMname);
+        etLname = findViewById(R.id.etLname);
+        etAddress = findViewById(R.id.etAddress);
+        etEmail = findViewById(R.id.Email);
+        etDob = findViewById(R.id.Dob);
+
+        button = findViewById(R.id.btn);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent.putExtra("fname",etFname.getText().toString());
+                intent.putExtra("mname", etMname.getText().toString());
+                intent.putExtra("lname", etLname.getText().toString());
+                intent.putExtra("dob", etDob.getText().toString());
+                intent.putExtra("address", etAddress.getText().toString());
+                intent.putExtra("email", etEmail.getText().toString());
+
+                startActivity(intent);
+            }
+        });
+
+    }
+}
+
+
+activity_second.xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/tvDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Details will appear here"
+        android:textSize="18sp"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Display"/>
+</LinearLayout>
+
+
+
+SecondActivity.java
+public class SecondActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_second);
+
+        TextView displayText;
+        displayText = findViewById(R.id.tvDisplay);
+        Button button2 = findViewById(R.id.btn2);
+
+        Intent intent = getIntent();
+        String fname = intent.getStringExtra("fname");
+        String mname = intent.getStringExtra("mname");
+        String lname = intent.getStringExtra("lname");
+        String dob = intent.getStringExtra("dob");
+        String email = intent.getStringExtra("email");
+        String address = intent.getStringExtra("address");
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayText.setText("First Name: " + fname + "\nMiddle Name: " + mname + "\nLast Name : " + lname + "\nDOB : " + dob + "\nAddress : " + address + "\nEmail : " + email);
+
+            }
+        });
+    }
+}
+
+---------------------
+SETC
+
+
+
+
+
+
+
+
+
