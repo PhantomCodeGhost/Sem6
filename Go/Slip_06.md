@@ -11,25 +11,28 @@ package main
 
 import "fmt"
 
-// copyArray copies all elements from source to a new destination array and returns it
-func copyArray(source [5]int) [5]int {
-    var destination [5]int
-
-    for i := 0; i < len(source); i++ {
-        destination[i] = source[i]
-    }
-
-    return destination
+type Array struct {
+	a [5]int
 }
 
-// Entry point: demonstrates array copy using copyArray function
+// Method
+func (x Array) copyArray() [5]int {
+	var destination [5]int
+
+	for i := 0; i < len(x.a); i++ {
+		destination[i] = x.a[i]
+	}
+
+	return destination
+}
+
 func main() {
-    source := [5]int{10, 20, 30, 40, 50}
+	var obj Array
+	obj.a = [5]int{10, 20, 30, 40, 50}
 
-    // Call method
-    destination := copyArray(source)
+	destination := obj.copyArray()
 
-    fmt.Println("Source Array:", source)
-    fmt.Println("Copied Array:", destination)
+	fmt.Println("Source Array:", obj.a)
+	fmt.Println("Copied Array:", destination)
 }
 ```
