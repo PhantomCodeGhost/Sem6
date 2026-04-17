@@ -3,9 +3,6 @@
 ---
 
 # Q1: Read and Write Fibonacci Series Using a Channel
-# Q2: Create a Channel and Illustrate Closing It Using `for range` and `close`
-
-> **Note:** Both Q1 and Q2 are solved by the same program below, which demonstrates
 > sending Fibonacci values through a channel and closing it after all values are sent.
 
 ## main.go
