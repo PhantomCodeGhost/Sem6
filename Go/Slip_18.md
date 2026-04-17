@@ -8,18 +8,21 @@
 
 ```go
 package main
-
 import f "fmt"
 
-// Entry point: reads a number and prints its multiplication table from 1 to 10
-func main() {
-    var n int
-    f.Print("Enter a number: ")
-    f.Scanln(&n)
+func table(n int) {
+	
+	for i:=1; i<11; i++{
+	f.Println(n ," x ", i ," = ", n * i)
+	}
 
-    // Print multiplication table from 1 to 10
-    for i := 1; i <= 10; i++ {
-        f.Println(n, "x", i, "=", n*i)
-    }
 }
+
+func main(){
+	var n int
+	f.Print("Enter a number: ")
+	f.Scan(&n)
+	table(n)
+}
+
 ```
